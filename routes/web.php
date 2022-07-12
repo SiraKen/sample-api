@@ -39,13 +39,13 @@ if ($system_enabled) {
     // Get all comments
     $router->get('/api/comments', 'CommentController@index');
     // Get comment by id
-    $router->get('/api/comments/{id}', 'CommentController@show');
+    $router->get('/api/comments/{id}', 'CommentController@getComment');
     // Create new comment
-    $router->post('/api/comments', 'CommentController@store');
+    $router->post('/api/comments', 'CommentController@createComment');
     // Update comment
-    $router->put('/api/comments/{id}', 'CommentController@update');
+    $router->put('/api/comments/{id}', 'CommentController@updateComment');
     // Delete comment
-    $router->delete('/api/comments/{id}', 'CommentController@destroy');
+    $router->delete('/api/comments/{id}', 'CommentController@deleteComment');
 
     /**
      * Posts routes

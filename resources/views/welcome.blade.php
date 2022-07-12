@@ -25,7 +25,7 @@ $delete = "danger";
             {{-- Users --}}
             <div class="bg-light border p-3 mb-3">
                 <h2>Users</h2>
-                <ul class="m-0 p-0 list-style-none">
+                <ul class="p-0 list-style-none">
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
                         <a href="{{ $endpoint }}/users">{{ $endpoint }}/users</a>
@@ -52,19 +52,24 @@ $delete = "danger";
                         Delete a user by ID
                     </li>
                 </ul>
+                <h3>Required Fields</h3>
+                <p>
+                    <span class="badge bg-secondary">name</span>
+                    <span class="badge bg-secondary">email</span>
+                </p>
             </div>
             {{-- Posts --}}
             <div class="bg-light border p-3 mb-3">
                 <h2>Posts</h2>
-                <ul class="m-0 p-0 list-style-none">
+                <ul class="p-0 list-style-none">
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/posts</a>
+                        <a href="{{ $endpoint }}/posts">{{ $endpoint }}/posts</a>
                         Get all posts
                     </li>
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/posts/{id}</a>
+                        <a href="{{ $endpoint }}/posts/1">{{ $endpoint }}/posts/{id}</a>
                         Get a post by ID
                     </li>
                     <li>
@@ -83,19 +88,25 @@ $delete = "danger";
                         Delete a post by ID
                     </li>
                 </ul>
+                <h3>Required Fields</h3>
+                <p>
+                    <span class="badge bg-secondary">user_id</span>
+                    <span class="badge bg-secondary">title</span>
+                    <span class="badge bg-secondary">body</span>
+                </p>
             </div>
             {{-- Comments --}}
             <div class="bg-light border p-3 mb-3">
                 <h2>Comments</h2>
-                <ul class="m-0 p-0 list-style-none">
+                <ul class="p-0 list-style-none">
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/comments</a>
+                        <a href="{{ $endpoint }}/comments">{{ $endpoint }}/comments</a>
                         Get all comments
                     </li>
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/comments/{id}</a>
+                        <a href="{{ $endpoint }}/comments/1">{{ $endpoint }}/comments/{id}</a>
                         Get a comment by ID
                     </li>
                     <li>
@@ -114,19 +125,26 @@ $delete = "danger";
                         Delete a comment by ID
                     </li>
                 </ul>
+                <h3>Required Fields</h3>
+                <p>
+                    <span class="badge bg-secondary">post_id</span>
+                    <span class="badge bg-secondary">name</span>
+                    <span class="badge bg-secondary">email</span>
+                    <span class="badge bg-secondary">body</span>
+                </p>
             </div>
             {{-- Todos --}}
             <div class="bg-light border p-3 mb-3">
                 <h2>Todos</h2>
-                <ul class="m-0 p-0 list-style-none">
+                <ul class="p-0 list-style-none">
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/todos</a>
+                        <a href="{{ $endpoint }}/todos">{{ $endpoint }}/todos</a>
                         Get all todos
                     </li>
                     <li>
                         <span class="badge bg-{{ $get }}">GET</span>
-                        <a href="{{ $endpoint }}">{{ $endpoint }}/todos/{id}</a>
+                        <a href="{{ $endpoint }}/todos/1">{{ $endpoint }}/todos/{id}</a>
                         Get a todo by ID
                     </li>
                     <li>
@@ -145,11 +163,17 @@ $delete = "danger";
                         Delete a todo by ID
                     </li>
                 </ul>
+                <h3>Required Fields</h3>
+                <p>
+                    <span class="badge bg-secondary">user_id</span>
+                    <span class="badge bg-secondary">title</span>
+                    <span class="badge bg-secondary">completed</span>
+                </p>
             </div>
             {{-- System --}}
             <div class="bg-light border p-3 mb-3">
                 <h2>System</h2>
-                <ul class="m-0 p-0 list-style-none">
+                <ul class="p-0 list-style-none">
                     <li>
                         <span class="badge bg-primary">POST</span>
                         <a href="{{ $endpoint }}">{{ $endpoint }}/databases/reset</a>

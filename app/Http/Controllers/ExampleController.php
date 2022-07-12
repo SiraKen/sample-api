@@ -13,6 +13,7 @@ class ExampleController extends Controller
         DB::table('users')->truncate();
         DB::table('posts')->truncate();
         DB::table('comments')->truncate();
+        DB::table('todos')->truncate();
         return response()->json(['success' => true]);
     }
 

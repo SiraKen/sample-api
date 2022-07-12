@@ -1,5 +1,5 @@
 #!/bin/bash
-ARGS="$@:2"
+ARGS=${@:2}
 
 case $1 in
 "serve")
@@ -10,6 +10,9 @@ case $1 in
 ;;
 "migrate:fresh")
     php artisan migrate:fresh
+;;
+"test")
+    vendor/bin/phpunit --testdox $ARGS
 ;;
 *)
     echo Unexpected argument: $1
