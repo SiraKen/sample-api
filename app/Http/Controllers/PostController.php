@@ -20,20 +20,33 @@ class PostController extends Controller
     public function createPost(Request $request)
     {
         $post = Post::create($request->all());
+
+        if (!$post) {
+            return response()->json(null, 500);
+        }
+
         return response()->json($post, 201);
     }
 
     public function updatePost($id, Request $request)
     {
         $post = Post::findOrFail($id);
-        $post->update($request->all());
-        return response()->json($post, 200);
+
+        if ($post->update($request->all())) {
+            return response()->json($post, 200);
+        }
+
+        return response()->json(null, 500);
     }
 
     public function deletePost($id)
     {
-        Post::findOrFail($id)->delete();
-        return response()->json(null, 204);
-    }
+        $post = Post::findOrFail($id);
 
+        if ($post->delete()) {
+            return response()->json(null, 204);
+        }
+
+        return response()->json(null, 500);
+    }
 }

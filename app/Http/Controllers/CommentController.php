@@ -20,20 +20,33 @@ class CommentController extends Controller
     public function createComment(Request $request)
     {
         $comment = Comment::create($request->all());
+
+        if (!$comment) {
+            return response()->json(null, 500);
+        }
+
         return response()->json($comment, 201);
     }
 
     public function updateComment($id, Request $request)
     {
         $comment = Comment::findOrFail($id);
-        $comment->update($request->all());
-        return response()->json($comment, 200);
+
+        if ($comment->update($request->all())) {
+            return response()->json($comment, 200);
+        }
+
+        return response()->json(null, 500);
     }
 
     public function deleteComment($id)
     {
-        Comment::findOrFail($id)->delete();
-        return response()->json(null, 204);
-    }
+        $comment = Comment::findOrFail($id);
 
+        if ($comment->delete()) {
+            return response()->json(null, 204);
+        }
+
+        return response()->json(null, 500);
+    }
 }

@@ -20,19 +20,33 @@ class TodoController extends Controller
     public function createTodo(Request $request)
     {
         $todo = Todo::create($request->all());
+
+        if (!$todo) {
+            return response()->json(null, 500);
+        }
+
         return response()->json($todo, 201);
     }
 
     public function updateTodo($id, Request $request)
     {
         $todo = Todo::findOrFail($id);
-        $todo->update($request->all());
-        return response()->json($todo, 200);
+
+        if ($todo->update($request->all())) {
+            return response()->json($todo, 200);
+        }
+
+        return response()->json(null, 500);
     }
 
     public function deleteTodo($id)
     {
-        Todo::findOrFail($id)->delete();
-        return response()->json(null, 204);
+        $todo = Todo::findOrFail($id);
+
+        if ($todo->delete()) {
+            return response()->json(null, 204);
+        }
+
+        return response()->json(null, 500);
     }
 }
