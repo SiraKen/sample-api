@@ -32,6 +32,9 @@ if ($system_enabled) {
     $router->post('/api/databases/reset', 'ExampleController@resetDatabase');
     // Seed database with fake data
     $router->post('/api/databases/seed', 'ExampleController@seedDatabase');
+    // import from json file
+    $router->get('/api/databases/import', 'ExampleController@importJson');
+    $router->post('/api/databases/import', 'ExampleController@importJson');
 
     /**
      * Comments routes
@@ -88,7 +91,6 @@ if ($system_enabled) {
     $router->put('/api/users/{id}', 'UserController@updateUser');
     // Delete user
     $router->delete('/api/users/{id}', 'UserController@deleteUser');
-
 } else {
     $router->get('/', function () use ($router) {
         return view('disabled');

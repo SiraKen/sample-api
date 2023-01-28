@@ -64,4 +64,26 @@ class ExampleController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+    public function importJson()
+    {
+        if (request()->isMethod('post')) {
+            $json = file_get_contents(request()->file('json')->path());
+            $data = json_decode($json, true);
+            $table = request()->input('table');
+
+            // DBリセット
+            DB::table($table)->truncate();
+
+            // データインポート
+            foreach ($data as $row) {
+                $row['created_at'] = date('Y-m-d H:i:s');
+                $row['updated_at'] = date('Y-m-d H:i:s');
+                DB::table($table)->insert($row);
+            }
+            return response()->json(['success' => true]);
+        }
+
+        return view('import');
+    }
 }
